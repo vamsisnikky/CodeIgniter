@@ -22,7 +22,7 @@ and open the template in the editor.
         
         ?>
         <div id="calendar">
-            <?php echo $this->calendar->generate();?>
+            <?php echo $this->calendar->generate(2006,6);?>
         </div>
        <!--alternative syntax of php code calling-->
         
