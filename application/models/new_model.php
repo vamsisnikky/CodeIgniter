@@ -36,8 +36,7 @@ class New_model extends CI_Model {
     }
 
     public function set_news() {
-        $this->load->helper('form');
-        $this->load->helper('html');
+      
         $this->load->helper('date');
 //        $data = array(
 //            'title' => $this->input->post('title'),
