@@ -1,0 +1,36 @@
+/* 
+    Document   : style
+    Created on : 13 Nov, 2013, 10:41:42 AM
+    Author     : hb
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body{
+    background-color: #D0D0D0; 
+    width:80%;
+    margin: 0 auto;
+}
+#main{
+    background-color: #D0D0D0; 
+    color:green;
+    width:75%;
+    margin:0 auto;
+}
+.error{
+    width:15%;
+    text-align: center;
+    border:1px solid#ccc;
+    -webkit-box-shadow: 0 0 5px darkslategrey;
+    color:darkred;
+    font-size: 12px;
+}
+#calendar{
+    width:23%;
+    margin: 0 auto;
+    background-color: white;
+    
+}
