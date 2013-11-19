@@ -20,7 +20,7 @@ class Pages EXTENDS CI_Controller {
                'start_day'    => 'monday',
                'month_type'   => 'long',
                'day_type'     => 'short',
-              'show_next_prev'  => TRUE
+              
              );
                 $this->load->library('calendar',$prefs);
 
