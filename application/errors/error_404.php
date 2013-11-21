@@ -59,7 +59,8 @@ p {
 </head>
 <body>
 	<div id="container">
-                <a href="index"><img src="<?php echo base_url(); ?>images/404error.jpg"></a>
+            
+                <a href="http://192.168.42.10/CodeIgniter/"><img src="http://192.168.42.10/CodeIgniter/images/404error.jpg"></a>
 	</div>
 </body>
 </html>

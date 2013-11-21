@@ -9,6 +9,11 @@ class Signup EXTENDS CI_Controller {
     }
 
     public function index() {
+      $data = $_POST;
+      if(isset($_POST) && $_POST != NULL && is_array($_POST)){
+      $technologies = implode(", ",$data['tech']);
+      $data['tech'] = $technologies;
+      }
         $this->load->library('form_validation');
 //        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         $this->lang->load('mylang');
@@ -26,11 +31,16 @@ class Signup EXTENDS CI_Controller {
             $this->load->view('pages/signup');
             $this->load->view('templates/footer');
         } else {
+            $this->load->model('model_dbpractice');
+            $status = $this->model_dbpractice->insert($data);
+            if($status == 1){
             $this->load->view('templates/header');
-            $this->load->view('pages/signupsucces');
+            $this->load->view('pages/signupsucces',array('username'=>$data['username']));
             $this->load->view('templates/footer');
+            }
         }
     }
+    //function used in form_validation of username
     public function checkusername($str){
         if($str == "admin"){
             $this->form_validation->set_message('checkusername','The %s feild cannot be word `admin`');

@@ -14,16 +14,17 @@ and open the template in the editor.
     </head>
     <body>
         <h1>CodeIgniter 2 </h1>
-<!--                <a href="index">Home</a>
-                <a href="about">About Us</a>
-                <a href="create">Posts</a>
--->                
+        <!--                <a href="index">Home</a>
+                        <a href="about">About Us</a>
+                        <a href="create">Posts</a>
+        -->                
         <?php echo anchor('pages/index', "Home"); ?>
         <?php echo anchor('pages/about', "News"); ?>
         <?php echo anchor('pages/create', "Share"); ?>
         <?php echo anchor('signup/index', "Signup"); ?>
 
-<a href="<?php echo base_url(); ?>signup/index">Signup anchor tag</a>
+        <a href="<?php echo base_url(); ?>signup/index">Signup anchor tag</a>
+        <?php echo anchor('userlisting', "Users"); ?>
 
     </body>
 </html>

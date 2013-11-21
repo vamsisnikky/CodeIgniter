@@ -9,12 +9,8 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <h3>You account registered  successfully</h3>
-       <?php
-       echo '<pre>';
-       print_r($_POST);
+        <h5>Hi <?php echo $username ;?></h5>
+        <h5>You account registered  successfully</h5>
        
-       
-       ?>
     </body>
 </html>

@@ -12,7 +12,7 @@ and open the template in the editor.
         
         <?php // echo validation_errors('<div class="error">', '</div>'); ?>
 
-        <?php echo form_open('signup/signup'); ?>
+        <?php echo form_open('signup'); ?>
        
         <h5>Username</h5>
         <input type="text" name="username" value="<?php echo set_value('username'); ?>"  />
