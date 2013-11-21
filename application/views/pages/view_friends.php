@@ -98,7 +98,7 @@ and open the template in the editor.
                     </select>
                 </form>
                 
-                <h4>Select users to see their mutual friends</h4>
+                <h4>Select users  see their mutual friends</h4>
                 <form method="get" action="http://192.168.42.10/CodeIgniter/friends"  >
                     <!--user 1-->
                     <select name="user1" >
