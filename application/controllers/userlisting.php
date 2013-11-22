@@ -22,7 +22,7 @@ class Userlisting EXTENDS CI_Controller {
     public function index() {
 
 
-        $config['base_url'] = 'http://192.168.42.10/CodeIgniter/userlisting/pagination';
+        $config['base_url'] = 'http://localhost/CodeIgniter/userlisting/pagination';
         $config['total_rows'] = $this->model_userlisting->record_count();
         $config['per_page'] = 3;
         $config["uri_segment"] = 3;
@@ -67,7 +67,7 @@ class Userlisting EXTENDS CI_Controller {
     public function pagination() {
 
         $config = array();
-        $config['base_url'] = 'http://192.168.42.10/CodeIgniter/userlisting/pagination';
+        $config['base_url'] = 'http://localhost/CodeIgniter/userlisting/pagination';
         $config['total_rows'] = $this->model_userlisting->record_count();
         $config['per_page'] = 3;
         $config["uri_segment"] = 3;

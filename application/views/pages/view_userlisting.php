@@ -101,8 +101,8 @@ and open the template in the editor.
                
             }
         </style>
-        <script src="http://192.168.42.10/CodeIgniter/js/jquery-1.9.1.js"></script>
-        <script src="http://192.168.42.10/CodeIgniter/js/jquery.tablesorter.js"></script>
+        <script src="http://localhost/CodeIgniter/js/jquery-1.9.1.js"></script>
+        <script src="http://localhost/CodeIgniter/js/jquery.tablesorter.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#myTable").tablesorter();
@@ -128,14 +128,14 @@ and open the template in the editor.
                     <tr>
                         <td colspan='6'><h3>Search Criteria</h3></td>
                     </tr>
-                    <form method="GET" action="http://192.168.42.10/CodeIgniter/userlisting">
+                    <form method="GET" action="http://localhost/CodeIgniter/userlisting">
                         <tr><td><input type="search" id="uname" name='uname' placeholder="Search by Username"></td></tr>
                         <tr><td><input type="search" id="gender" name='gender'placeholder="Search by Gender"></td></tr>
                         <tr><td><input type="search" id="dob" name='dob' placeholder="Search by DOB"></td></tr>
                         <tr><td><input type="search" id="email" name='email' placeholder="Search by Email"></td></tr>
                         <tr><td><input type="search" id="mobile"  name='mobile'placeholder="Search by Mobile"></td></tr>
                         <tr><td><input type="search" id="city" name='city' placeholder="Search by City"></td></tr>
-                        <tr><td><a href='http://192.168.42.10/CodeIgniter/userlisting'>Show All Users</a></td></tr>
+                        <tr><td><a href='http://localhost/CodeIgniter/userlisting'>Show All Users</a></td></tr>
                     </form>
 
                 </table>
