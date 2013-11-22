@@ -12,7 +12,7 @@ and open the template in the editor.
         
         <?php // echo validation_errors('<div class="error">', '</div>'); ?>
 
-        <?php echo form_open('signup'); ?>
+        <?php echo form_open_multipart('signup'); ?>
        
         <h5>Username</h5>
         <input type="text" name="username" value="<?php echo set_value('username'); ?>"  />
@@ -48,6 +48,7 @@ and open the template in the editor.
                <option value="Mumbai"<?php echo set_select('city','Mumbai')  ?>>Mumbai</option>
         </select><br>
         <?php echo form_error('city', '<div class="error">', '</div>'); ?>
+        <label>Upload Image<label><input type="file" name="userfile" >
          <input type="submit" name="submit" value="Submit">
     <?php echo form_close(); ?>
 
