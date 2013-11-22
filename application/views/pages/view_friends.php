@@ -118,7 +118,7 @@ and open the template in the editor.
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
-                </form>
+                </for   m>
                 <a href="http://192.168.42.10/CodeIgniter/friends">Show All Friends </a>
             </div>
             <div id="right-container">
