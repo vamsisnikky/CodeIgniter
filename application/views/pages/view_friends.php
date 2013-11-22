@@ -43,7 +43,7 @@ and open the template in the editor.
             h3,h4{
                 text-shadow: none;
             }
-            h5{
+            h5,span{
                 color:darkred;
             }
             #right-container h4,h4{
@@ -81,13 +81,18 @@ and open the template in the editor.
     <body>
         <script type="text/javascript">
             $(document).ready(function() {
-
+                $("#search").keypress(function(event) {
+                    if (event.which === 13) {
+                        
+                        $("#form_search").submit();
+                    }
+                });
             });
         </script>
         <div id="main-container">
             <div id="left-container">
                 <h4>Select user to view friends</h4>
-                <form method="get" action="http://192.168.42.10/CodeIgniter/friends"  >
+                <form id='form_dropdown' method="get" action="http://192.168.42.10/CodeIgniter/friends"  >
                     <select name="user" onchange="this.form.submit()">
                         <option value="">Select user</option>
                         <?php if (isset($users) && $users != NULL): ?>
@@ -97,7 +102,11 @@ and open the template in the editor.
                         <?php endif; ?>
                     </select>
                 </form>
-                
+                <h4>Search friends</h4>
+                <form id='form_search'method="get" action="http://192.168.42.10/CodeIgniter/friends/search_friends">
+                    <input id='search' type='search' name='search'>
+                    <input type='hidden' name='user' value='<?php echo $name ?>'>
+                </form>
                 <h4>Select users  see their mutual friends</h4>
                 <form method="get" action="http://192.168.42.10/CodeIgniter/friends"  >
                     <!--user 1-->
@@ -118,13 +127,18 @@ and open the template in the editor.
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
-                </for   m>
-                <a href="http://192.168.42.10/CodeIgniter/friends">Show All Friends </a>
+                    </for   m>
+                    <a href="http://192.168.42.10/CodeIgniter/friends">Show All Friends </a>
             </div>
             <div id="right-container">
-                <?php if (isset($name) && $name != NULL) { ?>
+                <?php if(isset($name) && isset($search) && $name != NULL && $search != NULL){?>
+                    <h4>Friends List Of <?php echo $name ?> with search key `<span><?php echo $search ?></span>`</h4>
+                <?php } elseif ((isset($search) && $search != NULL)) {?>
+                    <h4>All Friends List with Search key `<span><?php echo $search ?></span>`</h4>
+               <?php }
+                elseif (isset($name) && $name != NULL) { ?>
                     <h4>Friends List Of <?php echo $name ?></h4>
-                <?php } else { ?>
+               <?php }else { ?>
                     <h4>All Friends List</h4>
                 <?php } ?>
                 <table>
@@ -137,7 +151,7 @@ and open the template in the editor.
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (isset($friends) && $friends != NULL){ ?>
+                        <?php if (isset($friends) && $friends != NULL) { ?>
                             <?php foreach ($friends as $friend): ?>
                                 <tr>
                                     <td><?php echo $friend['friend_name']; ?></td>
@@ -146,9 +160,9 @@ and open the template in the editor.
                                     <td><?php echo $friend['friend_city']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
-                        <?php }else {?>
-                                <tr><td colspan="4"><h5>No Friends for <?php echo $name?></h5></td></tr>
-                                <?php } ?>
+                        <?php }else { ?>
+                            <tr><td colspan="4"><h5>No Friends for <?php echo $name ?></h5></td></tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

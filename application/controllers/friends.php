@@ -19,18 +19,28 @@ class Friends EXTENDS CI_Controller {
     }
 
     public function index() {
-        if(isset($_GET) && $_GET != NULL){
+        if (isset($_GET) && $_GET != NULL) {
             $user = $_GET['user'];
-        }
-        else {
+        } else {
             $user = NULL;
         }
         $results = $this->model_friends->get_friends($user);
         $users = $this->model_friends->get_users();
-        $this->load->view('pages/view_friends',array('friends'=>$results,'name'=>$user,'users' => $users));
+        $this->load->view('pages/view_friends', array('friends' => $results, 'name' => $user, 'users' => $users));
     }
-    public function mutual_friends(){
-        
+
+    public function search_friends() {
+       
+        if (isset($_GET) && $_GET != NULL) {
+            $user = $_GET['user'];
+            $friend = $_GET['search'];
+        } else {
+            $user = NULL;
+            $friend = NULL;
+        }
+        $results = $this->model_friends->search_friends($friend,$user);
+        $users = $this->model_friends->get_users();
+        $this->load->view('pages/view_friends', array('friends' => $results, 'name'=>$user, 'users' => $users,'search' =>$friend));
     }
 
 }

@@ -63,8 +63,7 @@ and open the template in the editor.
                 <?php foreach ($data_rows as $row): ?>
                     <tr>
                         <td><?php echo $row['Customer_name']; ?> </td>
-                    </tr> 
-                <?php endforeach; ?>
+                    </tr>                 <?php endforeach; ?>
                 <tr>
                     <td>Total <?php echo $count ?> records in table</td>
                 </tr>
@@ -72,14 +71,48 @@ and open the template in the editor.
         <?php endif; ?>
 
         <?php if (isset($data_single_row) && $data_single_row != NULL): ?>
-          
+
             <h3> Result of single row (`->row()`) </h3>
             <h4>Employee With Highest Salary</h4>
-           Employee Id : <?php echo $data_single_row->employee_id; ?> <br>
-           Employee Name : <?php echo $data_single_row->employee_name; ?> <br>
-           Designation : <?php echo $data_single_row->designation; ?><br>
-           Salary : <?php echo $data_single_row->salary; ?><br>
-           Reporting Person : <?php echo $data_single_row->reporting_person; ?><br>
+            <label> Employee Id :   </label> <?php echo $data_single_row->employee_id; ?> <br>
+            <label> Employee Name : </label> <?php echo $data_single_row->employee_name; ?> <br>
+            <label> Designation :   </label> <?php echo $data_single_row->designation; ?><br>
+            <label> Salary :        </label> <?php echo $data_single_row->salary; ?><br>
+            <label> Reporting Person : </label> <?php echo $data_single_row->reporting_person; ?><br>
+        <?php endif; ?>
+
+        <?php if (isset($data_get) && $data_get != NULL): ?>
+            <h3> Result of single row (`->get('table_name')`) </h3>
+            <table>
+                <?php foreach ($data_get as $row): ?>
+                    <tr>
+                        <td><?php echo $row['username']; ?> </td>
+                        <td><?php echo $row['password']; ?> </td>
+                        <td><?php echo $row['email']; ?> </td>
+                        <td><?php echo $row['gender']; ?> </td>
+                        <td><?php echo $row['technology']; ?> </td>
+                        <td><?php echo $row['city']; ?> </td>
+                        <td><div><img height="100" width="100" src="http://localhost/CodeIgniter/uploads/<?php echo $row['image']; ?>"></div></td>
+                    </tr> 
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+
+        <?php if (isset($data_get_blob) && $data_get_blob != NULL): ?>
+            <h3> Result of single row (`->get('table_name')`)  but image using blob</h3>
+            <table>
+                <?php foreach ($data_get_blob as $row): ?>
+                 <tr>
+                        <td><?php echo $row['username']; ?> </td>
+                        <td><?php echo $row['password']; ?> </td>
+                        <td><?php echo $row['email']; ?> </td>
+                        <td><?php echo $row['gender']; ?> </td>
+                        <td><?php echo $row['technology']; ?> </td>
+                        <td><?php echo $row['city']; ?> </td>
+                        <td><div><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" width="100" height="100">';?></div></td>
+                    </tr> 
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>
     </body>
 </html>

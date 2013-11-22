@@ -34,7 +34,16 @@ class Dbpractice EXTENDS CI_Controller {
         $result_single_row = $this->model_dbpractice->get_single_row();
         $this->load->view('pages/view_dbpractice', array('data_single_row' => $result_single_row));
     }
-
+    
+    public function get_news_users(){
+        $result_get = $this->model_dbpractice->get_users();
+        $this->load->view('pages/view_dbpractice', array('data_get' => $result_get));
+    }
+    
+    public function get_records_blob() {
+         $result_get = $this->model_dbpractice->get_records_blob();
+         $this->load->view('pages/view_dbpractice', array('data_get_blob' => $result_get));
+    }
 }
 
 ?>
