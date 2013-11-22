@@ -6,75 +6,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style> 
-            body{
-                font-family: arial;
-                font-size: 14px;
-                /*text-shadow: 0 0 10px darkslategray;*/
-            }
-            #main-container{
-                width:90%;
-                margin:0 auto;
-                border: 1px solid #ccc;
-
-            }
-            #left-container{
-                text-align: center;
-                width:20%;
-                float:left;
-                margin:10px;
-                /*margin:0 auto;*/
-                padding:2%;
-                border: 1px solid #ccc;
-
-                overflow: auto;
-            }
-            #right-container{
-                text-align: center;
-                width:68%;
-                float:left;
-                margin:0 auto;
-                margin:10px 10px 0px 0;
-                border: 1px solid #ccc;
-                padding:2%;
-
-                overflow: auto;
-            }
-            h3,h4{
-                text-shadow: none;
-            }
-            h5{
-                color:darkred;
-            }
-            #right-container h4,h4{
-                padding:2px;
-                margin:2px;
-            }
-            table{
-                margin: 0 auto;
-                background-color: #EBF3EC;
-                width: 60%; 
-            }
-            th{
-                color:whitesmoke;
-                background-color: #4696CB;
-            }
-            td,th{
-                box-shadow: 0 0 1px darkslategray;
-                padding:5px;
-            }
-            p.footer{
-                text-align: right;
-                font-size: 11px;
-                line-height: 32px;
-                padding: 0 10px 0 10px;
-                margin: 0px 0 0 0;
-                position: static;
-            }
-            .clear{
-                clear: both;
-            }
-        </style>
+        <link href="../../../css/view_friends_style.css">
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <title>Friends list</title>
     </head>
