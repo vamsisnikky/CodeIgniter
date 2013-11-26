@@ -73,6 +73,35 @@ class Model_dbpractice EXTENDS CI_Model {
         $DB2 = $this->load->database('mydatabase', TRUE);
         return $DB2->get('news_users_duplicate')->result_array();
     }
+    
+    public function insert_country($country){
+        $db3 = $this->load->database('php',TRUE);
+        foreach($country as $name){
+            $info = array('iCountryId' => "",'vCountryName' => $name);
+            $db3->insert('country_master', $info);
+        }
+       echo $db3->affected_rows();
+       
+    }
+    public function insert_state($state){
+        $db3 = $this->load->database('php',TRUE);
+        foreach($state as $name){
+            $info = array('iStateId' => "",'vStateName' => $name,'iCountryId' => 82);
+            $db3->insert('state_master', $info);
+        }
+       echo $db3->affected_rows();
+       
+    }
+
+     public function insert_city($city_array){
+        $db3 = $this->load->database('php',TRUE);
+        foreach($city_array as $name){
+            $info = array('iCityId' => "",'vCityName' => $name,'iStateId' => 12);
+            $db3->insert('city_master', $info);
+        }
+       echo $db3->affected_rows();
+       
+    }
 
 }
 

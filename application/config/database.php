@@ -70,5 +70,11 @@ $db['mydatabase']['password'] = 'root';
 $db['mydatabase']['database'] = 'mydatabase';
 $db['mydatabase']['dbdriver'] = 'mysql';
 
+$db['php']['hostname'] = 'localhost';
+$db['php']['username'] = 'root';
+$db['php']['password'] = 'root';
+$db['php']['database'] = 'php';
+$db['php']['dbdriver'] = 'mysql';
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */
