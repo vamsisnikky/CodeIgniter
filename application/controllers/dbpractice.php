@@ -79,8 +79,68 @@ class Dbpractice EXTENDS CI_Controller {
         $this->model_dbpractice->insert_state($states);
     }
 
+    public function listing() {
+        $this->load->view("pages/dropdown");
+    }
+
+    public function captcha() {
+
+        $this->load->helper('captcha');
+        $vals = array(
+            'img_path' => './captcha/',
+            'img_url' => 'http://localhost/CodeIgniter/captcha/',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200
+        );
+
+        $cap = create_captcha($vals);
+
+        return $cap;
+    }
+
+    public function login1() {
+         $this->load->view('pages/view_login');
+       
+    }
+
+    public function login() {
+
+        $this->load->helper('captcha');
+        $vals = array(
+            'img_path' => './captcha/',
+            'img_url' => 'http://localhost/CodeIgniter/captcha/',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200
+        );
+
+        $cap = create_captcha($vals);
+
+        if (isset($_POST)) {
+            $max_attempts = 3;
+            if ($this->model_dbpractice->login_attempt_count() <= $max_attempts) {
+                if (isset($_POST['login']) && $_POST('captcha')) {
+                    $data = $_POST;
+                    if ($data['captcha'] == $cap['word']) {
+                        $results = $this->model_dbpractice->login($data);
+                    } else {
+                        $this->load->view('pages/login?invalidcaptcha=yes');
+                    }
+                    if ($results == 1) {
+                        $this->load->view('pages/home.php');
+                    } else {
+                        $this->load->view('pages/view_login');
+                    }
+                }
+            } else {
+                //Something else
+
+                $this->load->view('pages/view_login', array('captha' => $cap));
+            }
+        } 
+    }
 
 }
-
 
 ?>
