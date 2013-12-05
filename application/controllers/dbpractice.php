@@ -79,61 +79,66 @@ class Dbpractice EXTENDS CI_Controller {
         $this->model_dbpractice->insert_state($states);
     }
 
-    public function city() {
-        $city_ap = "Adilabad                         
-Anantapur
-Chittoor
-Kakinada
-Guntur
-Hyderabad
-Karimnagar
-Khammam
-Krishna
-Kurnool
-Mahbubnagar
-Medak
-Nalgonda
-Nizamabad
-Ongole
-Hyderabad
-Srikakulam
-Nellore
-Visakhapatnam
-Vizianagaram
-Warangal
-Eluru
-Kadapa";
-        $city_gj = "Ahmedabad
-Amreli district
-Anand
-Banaskantha
-Bharuch
-Bhavnagar
-Dahod
-The Dangs
-Gandhinagar
-Jamnagar
-Junagadh
-Kutch
-Kheda
-Mehsana
-Narmada
-Navsari
-Patan
-Panchmahal
-Porbandar
-Rajkot
-Sabarkantha
-Surendranagar
-Surat
-Vyara
-Vadodara
-Valsad";
-        $city_array = preg_split("/[\s,]+/", $city_gj);
-                $this->model_dbpractice->insert_city($city_array);
-
+//    public function city() {
+//        $city_ap = "Adilabad                         
+//Anantapur
+//Chittoor
+//Kakinada
+//Guntur
+//Hyderabad
+//Karimnagar
+//Khammam
+//Krishna
+//Kurnool
+//Mahbubnagar
+//Medak
+//Nalgonda
+//Nizamabad
+//Ongole
+//Hyderabad
+//Srikakulam
+//Nellore
+//Visakhapatnam
+//Vizianagaram
+//Warangal
+//Eluru
+//Kadapa";
+//        $city_gj = "Ahmedabad
+//Amreli district
+//Anand
+//Banaskantha
+//Bharuch
+//Bhavnagar
+//Dahod
+//The Dangs
+//Gandhinagar
+//Jamnagar
+//Junagadh
+//Kutch
+//Kheda
+//Mehsana
+//Narmada
+//Navsari
+//Patan
+//Panchmahal
+//Porbandar
+//Rajkot
+//Sabarkantha
+//Surendranagar
+//Surat
+//Vyara
+//Vadodara
+//Valsad";
+//        $city_array = preg_split("/[\s,]+/", $city_gj);
+//                $this->model_dbpractice->insert_city($city_array);
+//
+//    }
+    
+    public function listing(){
+        $this->load->view("pages/dropdown");
     }
 
 }
+
 
 ?>

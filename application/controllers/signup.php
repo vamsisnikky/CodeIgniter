@@ -13,7 +13,7 @@ class Signup EXTENDS CI_Controller {
         if (isset($_POST) && $_POST != NULL && is_array($_POST)) {
             $technologies = implode(", ", $data['tech']);
             $data['tech'] = $technologies;
-            $data['image_mydatabase'] = file_get_contents($_FILES['userfile']['tmp_name']);
+            $data['image_mydatabase'] = @file_get_contents($_FILES['userfile']['tmp_name']);
         }
         $config['upload_path'] = './uploads';
         $config['allowed_types'] = 'gif|jpg|jpeg|png';
