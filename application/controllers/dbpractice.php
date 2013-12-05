@@ -79,61 +79,67 @@ class Dbpractice EXTENDS CI_Controller {
         $this->model_dbpractice->insert_state($states);
     }
 
-    public function city() {
-        $city_ap = "Adilabad                         
-Anantapur
-Chittoor
-Kakinada
-Guntur
-Hyderabad
-Karimnagar
-Khammam
-Krishna
-Kurnool
-Mahbubnagar
-Medak
-Nalgonda
-Nizamabad
-Ongole
-Hyderabad
-Srikakulam
-Nellore
-Visakhapatnam
-Vizianagaram
-Warangal
-Eluru
-Kadapa";
-        $city_gj = "Ahmedabad
-Amreli district
-Anand
-Banaskantha
-Bharuch
-Bhavnagar
-Dahod
-The Dangs
-Gandhinagar
-Jamnagar
-Junagadh
-Kutch
-Kheda
-Mehsana
-Narmada
-Navsari
-Patan
-Panchmahal
-Porbandar
-Rajkot
-Sabarkantha
-Surendranagar
-Surat
-Vyara
-Vadodara
-Valsad";
-        $city_array = preg_split("/[\s,]+/", $city_gj);
-                $this->model_dbpractice->insert_city($city_array);
+    public function captcha() {
 
+        $this->load->helper('captcha');
+        $vals = array(
+            'img_path' => './captcha/',
+            'img_url' => 'http://localhost/CodeIgniter/captcha/',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200
+        );
+
+        $cap = create_captcha($vals);
+
+        return $cap;
     }
 
+    public function login1() {
+        
+    }
+
+    public function login() {
+
+        $this->load->helper('captcha');
+        $vals = array(
+            'img_path' => './captcha/',
+            'img_url' => 'http://localhost/CodeIgniter/captcha/',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200
+        );
+
+        $cap = create_captcha($vals);
+
+        if (isset($_POST)) {
+            $max_attempts = 3;
+            if ($this->model_dbpractice->login_attempt_count() <= $max_attempts) {
+                if (isset($_POST['login']) && $_POST('captcha')) {
+                    $data = $_POST;
+                    if($data['captcha'] == $cap['word']){
+                    $results = $this->model_dbpractice->login($data);
+                    }
+                    else{
+                        $this->load->view('pages/login?invalidcaptcha=yes');
+                    }
+                    if ($results == 1) {
+                        $this->load->view('pages/home.php');
+                    } else {
+                        $this->load->view('pages/view_login');
+                    }
+                }
+            } else {
+                //Something else
+
+                $this->load->view('pages/view_login', array('captha' => $cap));
+            }
+        } else {
+            $this->load->view('pages/view_login');
+        }
+    }
+
+//End Function
 }
 
 ?>
