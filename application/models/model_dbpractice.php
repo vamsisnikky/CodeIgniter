@@ -102,6 +102,41 @@ class Model_dbpractice EXTENDS CI_Model {
        echo $db3->affected_rows();
        
     }
+    public function login_attempt_count() {
+        $this->load->helper('date');
+        $this->load->helper('string');
+      $seconds = 10;
+         // First we delete old attempts from the table 
+      $oldest1 = strtotime(date('Y-m-d H:i:s').' - '.$seconds.' seconds');
+      $oldest2 = date('Y-m-d H:i:s',$oldest1);
+      $del_data = $oldest2;
+      $this->db->where('time <', $del_data);
+      $this->db->delete('Login_Attempts');
+        // Next we insert this attempt into the table
+      $data = array(
+      'ip_address' => $_SERVER['REMOTE_ADDR'],
+      'time' => date("Y-m-d H:i:s"));
+      $this->db->insert('Login_Attempts', $data);
+
+        // Finally we count the number of recent attempts from this ip address 
+      $count = 'SELECT count(*) as number FROM Login_Attempts WHERE ip_address = ?';
+      $num = $this->db->query($count, $_SERVER['REMOTE_ADDR']);
+      if ($num->num_rows() > 0){
+        foreach($num->result() as $attempt){
+          $attempts = $attempt->number;
+            return $attempts;
+        }
+      }
+      
+  } 
+  public function login($data){
+      
+          $query = "SELECT username,password from user1 WHERE username='".$data['username']."' AND password = '".$data['password']."' ";
+         $count =  $this->db->query($query)->num_rows();
+          echo $this->db->last_query();
+          return $count;
+         
+      }
 
 }
 

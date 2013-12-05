@@ -11,6 +11,7 @@ and open the template in the editor.
         <title> <?php $title ?> CodeIgniter  </title>
 <!--        <script src="<?php echo base_url(); ?>js/jquery.js"></script>-->
         <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet"> 
+        
     </head>
     <body>
         <h1>CodeIgniter 2 </h1>

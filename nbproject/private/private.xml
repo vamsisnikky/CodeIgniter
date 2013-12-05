@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/CodeIgniter/application/controllers/friends.php</file>
+            <file>file:/var/www/CodeIgniter/application/config/routes.php</file>
+            <file>file:/var/www/CodeIgniter/application/config/database.php</file>
+            <file>file:/var/www/CodeIgniter/uploads/310.jpeg</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/view_login.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/signup.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/cart_test.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/pagination.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/view_dbpractice.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/templates/header.php</file>
+            <file>file:/var/www/CodeIgniter/uploads/311.jpeg</file>
+            <file>file:/var/www/CodeIgniter/.htaccess</file>
+            <file>file:/var/www/CodeIgniter/application/config/constants.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/userlisting.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/view_friends.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/dbpractice.php</file>
+            <file>file:/var/www/CodeIgniter/application/models/model_friends.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/view_userlisting.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/pages.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/signup.php</file>
+            <file>file:/var/www/CodeIgniter/application/views/pages/home.php</file>
+            <file>file:/var/www/CodeIgniter/application/models/model_dbpractice.php</file>
+            <file>file:/var/www/CodeIgniter/application/config/config.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/upload.php</file>
+            <file>file:/var/www/CodeIgniter/application/controllers/blog.php</file>
+            <file>file:/var/www/CodeIgniter/application/config/autoload.php</file>
+        </group>
+    </open-files>
 </project-private>
