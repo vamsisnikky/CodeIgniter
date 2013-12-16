@@ -40,7 +40,15 @@
 
 $route['default_controller'] = "pages";
 $route['404_override'] = '';
-
-
+$route['login.html'] ='dbpractice/login';
+$route['register.html']='register/user_register';
+$route['day3.html']='vamsi/day3';
+$route['constants.html']='vamsi/constants';
+$route['config.html']='vamsi/config_class';
+$route['database.html']='vamsi/database_class';
+$route['doctrine.html']='vamsi/doctrine';
+$route['day8.html']='vamsi/day8';
+$route['libraries.html']='vamsi/core_library';
+$route['creating_libraries.html']='vamsi/creating_libraries';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -102,17 +102,31 @@ and open the template in the editor.
             <h3> Result of single row (`->get('table_name')`)  but image using blob</h3>
             <table>
                 <?php foreach ($data_get_blob as $row): ?>
-                 <tr>
+                    <tr>
                         <td><?php echo $row['username']; ?> </td>
                         <td><?php echo $row['password']; ?> </td>
                         <td><?php echo $row['email']; ?> </td>
                         <td><?php echo $row['gender']; ?> </td>
                         <td><?php echo $row['technology']; ?> </td>
                         <td><?php echo $row['city']; ?> </td>
-                        <td><div><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" width="100" height="100">';?></div></td>
+                        <td><div><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="100" height="100">'; ?></div></td>
                     </tr> 
                 <?php endforeach; ?>
             </table>
         <?php endif; ?>
+
+        <?php if (isset($employees) && $employees != NULL): ?>
+            <h3> Result of using  database from different host</h3>
+            <table>
+                <?php foreach ($employees as $employee): ?>
+                    <tr>
+                        <td><? echo $employee['emp_mst_id']; ?></td>
+                        <td><? echo $employee['emp_name']; ?></td>
+                        <td><? echo $employee['dept_id']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+
     </body>
 </html>

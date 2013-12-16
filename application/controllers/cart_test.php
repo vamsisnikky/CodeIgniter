@@ -1,5 +1,9 @@
 <?php
 class Cart_test extends CI_Controller {
+    public function __construct() {
+        parent::__construct();
+       
+    }
 	
 	function add() {
 		
@@ -13,12 +17,16 @@ class Cart_test extends CI_Controller {
 		
 		$this->cart->insert($data);
 		echo "add() called";
+                
 	}
 	
 	function show() {
 		
-		$this->load->view('pages/viewcart',$this->cart->contents());
 		
+                echo '<pre>';
+		print_r($this->session->all_userdata());
+                echo '</pre>';
+                $this->load->view('pages/viewcart',$this->cart->contents());
 		
 	}
 	
@@ -41,7 +49,7 @@ class Cart_test extends CI_Controller {
 		
 		$data = array(
 			'rowid' => '456efa2d671ecce94aff804002e2047f',
-			'qty' => '1'
+			'qty' => '12'
 		);
 		
 		$this->cart->update($data);
@@ -57,7 +65,7 @@ class Cart_test extends CI_Controller {
 	function remove() {
 		
 		$data = array(
-			'rowid' => '456efa2d671ecce94aff804002e2047f',
+			'rowid' => 'vamsi',
 			'qty' => '0'
 		);
 		

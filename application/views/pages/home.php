@@ -18,7 +18,7 @@ and open the template in the editor.
         }
         else{
             echo 'false';
-        }
+        }   
         
         ?>
         <div id="calendar">

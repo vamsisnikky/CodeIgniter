@@ -28,7 +28,7 @@ and open the template in the editor.
 
         <h5>Email Address</h5>
         <input type="text" name="email" value="<?php echo set_value('email'); ?>"  />
-        <?php echo form_error('passconf', '<div class="error">', '</div>'); ?>
+        <?php echo form_error('email', '<div class="error">', '</div>'); ?>
         <h5>Gender</h5>
         <input type="radio" name="gender" value="male"<?php echo set_radio('gender', 'male') ?>/>Male
         <input type="radio" name="gender" value="female"<?php echo set_radio('gender', 'female') ?>/>Female
@@ -48,10 +48,17 @@ and open the template in the editor.
             <option value="Mumbai"<?php echo set_select('city', 'Mumbai') ?>>Mumbai</option>
         </select><br>
         <?php echo form_error('city', '<div class="error">', '</div>'); ?>
-        	
-        <label>Upload Image<label><input type="file" name="userfile" >
-        <input type="submit" name="submit" value="Submit">
-        <?php echo form_close(); ?>
 
-    </body>
-</html>
+<br>
+        <label>Upload Image<label><input type="file" name="userfile" >
+
+                <?php echo form_error('userfile', '<div class="error">', '</div>'); ?><br>
+                <?
+                $this->load->library('session');
+                print_r($this->session->flashdata('image_error'));
+                ?><br>
+                <input type="submit" name="submit" value="Submit">
+<?php echo form_close(); ?>
+
+                </body>
+                </html>

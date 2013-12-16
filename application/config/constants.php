@@ -36,6 +36,9 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-
+define('FROM_EMAIL','admin@newsusers.com');
+define('from_name','admin');
+define('MY_EMAIL','vamsi.testmail@gmail.com');
+define('MY_PASSWORD','vamsihb0624');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

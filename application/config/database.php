@@ -76,5 +76,11 @@ $db['php']['password'] = 'root';
 $db['php']['database'] = 'php';
 $db['php']['dbdriver'] = 'mysql';
 
+$db['training']['hostname'] = '192.168.43.41';
+$db['training']['username'] = 'root';
+$db['training']['password'] = '';
+$db['training']['database'] = 'training';
+$db['training']['dbdriver'] = 'mysql';
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */

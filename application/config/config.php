@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url'] = 'http://localhost/CodeIgniter/';
+$config['base_url'] = 'http://192.168.42.10/CodeIgniter/';
    
 /*
 |--------------------------------------------------------------------------
@@ -359,3 +359,13 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+function __autoload($class)
+{
+    if (strpos($class, 'CI_') !== 0)
+    {
+        if (file_exists($file = APPPATH . 'core/' . $class . EXT))
+        {
+            include $file;
+        }
+    }
+}

@@ -15,7 +15,7 @@ class Dbpractice EXTENDS CI_Controller {
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->load->model('model_dbpractice');
+//        $this->load->model('model_dbpractice');
     }
 
     public function index() {
@@ -99,46 +99,101 @@ class Dbpractice EXTENDS CI_Controller {
         return $cap;
     }
 
-    public function login1() {
-         $this->load->view('pages/view_login');
-       
-    }
-
     public function login() {
 
+        $this->load->library('session');
         $this->load->helper('captcha');
+
         $vals = array(
             'img_path' => './captcha/',
             'img_url' => 'http://localhost/CodeIgniter/captcha/',
             'img_width' => '150',
             'img_height' => 30,
-            'expiration' => 7200
+            'expiration' => 5
         );
 
         $cap = create_captcha($vals);
 
-        if (isset($_POST)) {
+        if (isset($_POST) & $_POST != NULL) {
             $max_attempts = 3;
-            if ($this->model_dbpractice->login_attempt_count() <= $max_attempts) {
-                if (isset($_POST['login']) && $_POST('captcha')) {
+            if ($this->model_dbpractice->login_attempt_count() > $max_attempts) {
+
+                $this->load->view('pages/view_login', array('captcha' => $cap));
+                if (isset($_POST['login']) && isset($_POST['captcha'])) {
                     $data = $_POST;
-                    if ($data['captcha'] == $cap['word']) {
-                        $results = $this->model_dbpractice->login($data);
-                    } else {
-                        $this->load->view('pages/login?invalidcaptcha=yes');
-                    }
+                    $results = $this->model_dbpractice->login($data);
                     if ($results == 1) {
-                        $this->load->view('pages/home.php');
+                        $this->session->set_userdata('username', $data['username']);
+                        $username = $this->session->userdata('username');
+                        $this->load->view('welcome_message', array('user' => $username));
                     } else {
-                        $this->load->view('pages/view_login');
+                        $this->load->view('pages/view_login', array('fail' => 'yes', 'captcha' => $cap));
                     }
                 }
             } else {
-                //Something else
-
-                $this->load->view('pages/view_login', array('captha' => $cap));
+                //post captcha Something else
+                if (isset($_POST['login'])) {
+                    $data = $_POST;
+                    $results = $this->model_dbpractice->login($data);
+                    if ($results == 1) {
+                        $this->session->set_userdata('username', $data['username']);
+                        $username = $this->session->userdata('username');
+                        $this->load->view('welcome_message', array('user' => $username));
+                    } else {
+                        $this->load->view('pages/view_login', array('fail' => 'yes'));
+                    }
+                }
             }
-        } 
+        } else {
+            $this->load->view('pages/view_login');
+        }
+    }
+
+    public function get_data_host() {
+
+        $this->load->model('model_dbpractice', 'other_host');
+        $result = $this->other_host->get_data_host();
+        $data = array('employees' => $result);
+        $this->load->view('pages/view_dbpractice', $data);
+    }
+
+    public function randomPassword() {
+
+        $lowercase = "qwertyuiopasdfghjklzxcvbnm";
+        $uppercase = "ASDFGHJKLZXCVBNMQWERTYUIOP";
+        $numbers = "1234567890";
+        $specialcharacters = "$@#";
+        $randomCode = "";
+        $length = 4;
+        mt_srand(crc32(microtime()));
+        $max = strlen($lowercase) - 1;
+        for ($x = 0; $x < abs($length / 2); $x++) {
+            $randomCode .= $lowercase{mt_rand(0, $max)};
+        }
+        $max = strlen($uppercase) - 1;
+        for ($x = 0; $x < abs($length / 2); $x++) {
+            $randomCode .= $uppercase{mt_rand(0, $max)};
+        }
+        $max = strlen($specialcharacters) - 1;
+        for ($x = 0; $x < abs($length / 2); $x++) {
+            $randomCode .= $specialcharacters{mt_rand(0, $max)};
+        }
+        $max = strlen($numbers) - 1;
+        for ($x = 0; $x < abs($length / 2); $x++) {
+            $randomCode .= $numbers{mt_rand(0, $max)};
+        }
+        echo str_shuffle($randomCode);
+        $this->get_data_host();
+    }
+    //function getting codeigniter version
+    public function get_version() {
+
+        echo CI_VERSION; // echoes something like 1.7.1
+    }
+    
+    public function url(){
+        echo base_url().'</br>';
+        echo site_url();
     }
 
 }

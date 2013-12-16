@@ -36,7 +36,7 @@ class Model_friends EXTENDS CI_Model {
         }
         
         return $query->result_array();
-//         echo $this->db->last_query();exit();
+
     }
 
 }

@@ -77,5 +77,3 @@ class Signup EXTENDS CI_Controller {
     }
 
 }
-
-?>

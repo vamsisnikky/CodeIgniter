@@ -6,9 +6,9 @@ and open the template in the editor.
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
+
         <link href="../../../css/view_friends_style.css">
-=======
+
         <style> 
             body{
                 font-family: arial;
@@ -78,7 +78,7 @@ and open the template in the editor.
                 clear: both;
             }
         </style>
->>>>>>> 0adbcefe2ee41adb08848ec91d2868a0b412bf41
+
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <title>Friends list</title>
     </head>

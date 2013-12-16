@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /*
  * To change this template, choose Tools | Templates
@@ -73,70 +73,78 @@ class Model_dbpractice EXTENDS CI_Model {
         $DB2 = $this->load->database('mydatabase', TRUE);
         return $DB2->get('news_users_duplicate')->result_array();
     }
-    
-    public function insert_country($country){
-        $db3 = $this->load->database('php',TRUE);
-        foreach($country as $name){
-            $info = array('iCountryId' => "",'vCountryName' => $name);
+
+    public function insert_country($country) {
+        $db3 = $this->load->database('php', TRUE);
+        foreach ($country as $name) {
+            $info = array('iCountryId' => "", 'vCountryName' => $name);
             $db3->insert('country_master', $info);
         }
-       echo $db3->affected_rows();
-       
-    }
-    public function insert_state($state){
-        $db3 = $this->load->database('php',TRUE);
-        foreach($state as $name){
-            $info = array('iStateId' => "",'vStateName' => $name,'iCountryId' => 82);
-            $db3->insert('state_master', $info);
-        }
-       echo $db3->affected_rows();
-       
+        echo $db3->affected_rows();
     }
 
-     public function insert_city($city_array){
-        $db3 = $this->load->database('php',TRUE);
-        foreach($city_array as $name){
-            $info = array('iCityId' => "",'vCityName' => $name,'iStateId' => 12);
+    public function insert_state($state) {
+        $db3 = $this->load->database('php', TRUE);
+        foreach ($state as $name) {
+            $info = array('iStateId' => "", 'vStateName' => $name, 'iCountryId' => 82);
+            $db3->insert('state_master', $info);
+        }
+        echo $db3->affected_rows();
+    }
+
+    public function insert_city($city_array) {
+        $db3 = $this->load->database('php', TRUE);
+        foreach ($city_array as $name) {
+            $info = array('iCityId' => "", 'vCityName' => $name, 'iStateId' => 12);
             $db3->insert('city_master', $info);
         }
-       echo $db3->affected_rows();
-       
+        echo $db3->affected_rows();
     }
+
     public function login_attempt_count() {
         $this->load->helper('date');
         $this->load->helper('string');
-      $seconds = 10;
-         // First we delete old attempts from the table 
-      $oldest1 = strtotime(date('Y-m-d H:i:s').' - '.$seconds.' seconds');
-      $oldest2 = date('Y-m-d H:i:s',$oldest1);
-      $del_data = $oldest2;
-      $this->db->where('time <', $del_data);
-      $this->db->delete('Login_Attempts');
+        $seconds = 30;
+        // First we delete old attempts from the table 
+        $oldest1 = strtotime(date('Y-m-d H:i:s') . ' - ' . $seconds . ' seconds');
+        $oldest2 = date('Y-m-d H:i:s', $oldest1);
+        $del_data = $oldest2;
+        $this->db->where('time <', $del_data);
+        $this->db->delete('Login_Attempts');
         // Next we insert this attempt into the table
-      $data = array(
-      'ip_address' => $_SERVER['REMOTE_ADDR'],
-      'time' => date("Y-m-d H:i:s"));
-      $this->db->insert('Login_Attempts', $data);
+        $data = array(
+            'ipaddress' => $_SERVER['REMOTE_ADDR'],
+            'time' => date("Y-m-d H:i:s"));
+        $this->db->insert('Login_Attempts', $data);
 
         // Finally we count the number of recent attempts from this ip address 
-      $count = 'SELECT count(*) as number FROM Login_Attempts WHERE ip_address = ?';
-      $num = $this->db->query($count, $_SERVER['REMOTE_ADDR']);
-      if ($num->num_rows() > 0){
-        foreach($num->result() as $attempt){
-          $attempts = $attempt->number;
-            return $attempts;
+        $count = 'SELECT count(*) as number FROM Login_Attempts WHERE ipaddress = ?';
+        $num = $this->db->query($count, $_SERVER['REMOTE_ADDR']);
+        if ($num->num_rows() > 0) {
+            foreach ($num->result() as $attempt) {
+                $attempts = $attempt->number;
+                return $attempts;
+            }
         }
-      }
-      
-  } 
-  public function login($data){
-      
-          $query = "SELECT username,password from user1 WHERE username='".$data['username']."' AND password = '".$data['password']."' ";
-         $count =  $this->db->query($query)->num_rows();
-          echo $this->db->last_query();
-          return $count;
-         
-      }
+    }
+
+    public function login($data) {
+
+        $query = "SELECT username,password from user1 WHERE username='" . $data['username'] . "' AND password = '" . $data['password'] . "' ";
+        $count = $this->db->query($query)->num_rows();
+//        echo $this->db->last_query();
+        return $count;
+    }
+
+    public function get_data_host() {
+        $db4 = $this->load->database('training', TRUE);
+//        $query_select = "SELECT emp_mst_id,emp_name,dept_id FROM emp_mst";
+        //        $result_select  = $db4->query($query_select)->result_array();
+        $db4->select('emp_mst_id,emp_name,dept_id');
+        $query_select = $db4->get('emp_mst');
+        $result_select = $query_select->result_array();
+        return $result_select;
+    }
 
 }
 
