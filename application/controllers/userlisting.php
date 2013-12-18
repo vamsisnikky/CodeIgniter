@@ -74,7 +74,7 @@ class Userlisting EXTENDS CI_Controller {
 
         $this->pagination->initialize($config);
 
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;  
 
         $data = $this->model_userlisting->fetch_users($config['per_page'], $page);
         $links = $this->pagination->create_links();

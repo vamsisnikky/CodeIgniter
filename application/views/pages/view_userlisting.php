@@ -135,7 +135,7 @@ and open the template in the editor.
                         <tr><td><input type="search" id="email" name='email' placeholder="Search by Email"></td></tr>
                         <tr><td><input type="search" id="mobile"  name='mobile'placeholder="Search by Mobile"></td></tr>
                         <tr><td><input type="search" id="city" name='city' placeholder="Search by City"></td></tr>
-                        <tr><td><a href='http://localhost/CodeIgniter/userlisting'>Show All Users</a></td></tr>
+                        <tr><td><a href='http://localhost/CodeIgniter/userlisting/'>Show All Users</a></td></tr>
                     </form>
 
                 </table>
